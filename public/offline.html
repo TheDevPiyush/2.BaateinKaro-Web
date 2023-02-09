@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>|No Internet|</title>
+    <style>
+        .container {
+            text-align: center;
+            font-weight: bolder;
+            margin-top: 30vh;
+            font-size: calc(13px + 0.7em);
+            color: bisque;
+
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: rgb(35, 35, 35);
+        }
+
+        .btn {
+            padding-top: 10vh;
+        }
+
+        .button {
+            text-align: center;
+            background-color: rgb(104, 28, 247);
+            font-size: 2rem;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 15px;
+            padding-right: 15px;
+            color: blanchedalmond;
+            font-weight: bold;
+            border-radius: 20px;
+            border-style: solid;
+            border-width: 3px;
+            border-color: rgb(112, 112, 112);
+            cursor: pointer;
+            margin: auto;
+            width: fit-content;
+        }
+
+        .button:active {
+            background-color: rgb(69, 20, 159);
+            transform: translateY(6px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        It seems you are offline right now. Check mobile data or wifi settings.
+        <div class="btn">
+            <div class="button" onclick="reloadPage()">
+                Reload
+            </div>
+        </div>
+    </div>
+    <script>
+        function reloadPage() {
+            window.location.reload(false)
+        }
+    </script>
+</body>
+
+</html>
