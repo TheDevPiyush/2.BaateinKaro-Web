@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# About Project
+This project is coded by PiyushDev.<br/><br/> It uses bootstrap V_5 for GUI (CSS), React js for frontend and firebase for backend.<br/>
+In Baatein Karoo you can chat with your friends in real time after signing in with your Google Account. <br/><br/>
+NOTE : There is only one public room in the app. The app doesn't provide personal chatting feature.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### The App is Live here : https://baatein-karoo.web.app/
 
 ## Available Scripts
 
