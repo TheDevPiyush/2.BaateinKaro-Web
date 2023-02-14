@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { auth, db } from './Firebase'
-import { addDoc, collection, getDocs, limit, orderBy, query, serverTimestamp } from 'firebase/firestore'
+import { addDoc, collection, getDocs, limit, orderBy, query, serverTimestamp, onSnapshot } from 'firebase/firestore'
 
 let name
 
@@ -46,10 +46,10 @@ export default class Home extends Component {
     async componentDidMount() {
         document.title = "Baatein Karoo || Home"
         this.showPost()
-        setInterval(() => {
-            this.showPost()
-        }, 4000);
     }
+    getmessgae = onSnapshot(dataBaseConnection, () => {
+        this.showPost()
+    })
 
     showPost = async () => {
         try {
@@ -57,7 +57,6 @@ export default class Home extends Component {
             const data = await getDocs(q)
             this.setState({ showPostState: data.docs.map((doc) => ({ ...doc.data(), id: doc.id })) })
             name = auth.currentUser.displayName
-
             this.setState({ FailAlert: false })
             this.setState({ postStatus: true })
         }
@@ -89,7 +88,7 @@ export default class Home extends Component {
                         </div>
                     </div>}
 
-                    {this.state.postStatus === true && <div className="showing-posts container border border-3 rounded-3 border-dark" style={{ "height": "400px", "overflowY": "auto", "backgroundColor": "#a0ffe9" }}>
+                    {this.state.postStatus === true && <div className="showing-posts container border border-3 rounded-3 border-dark" style={{ "height": "400px", "overflowY": "auto", "backgroundColor": "#a0ffe9", "margin":"auto" }}>
                         {this.state.showPostState.map((post) => {
                             return <>
                                 {<div className="ok" >

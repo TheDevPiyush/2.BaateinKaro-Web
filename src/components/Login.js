@@ -24,8 +24,8 @@ export default class Login extends Component {
     submitTwo = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
-                const user = result.user;
                 this.setState({ isLoggedin: true })
+                const user = result.user;
                 setTimeout(() => {
                     this.props.navigate("/home")
                     localStorage.setItem("loginData", this.state.isLoggedin)
