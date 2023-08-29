@@ -1,17 +1,14 @@
 import React from 'react'
-import { auth, db, messaging } from './Firebase'
-import { addDoc, collection, getDocs, limit, orderBy, query, serverTimestamp, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
+import { auth, db } from './Firebase'
+import { Offline, Online } from "react-detect-offline";
+import { addDoc, collection, getDocs, orderBy, query, serverTimestamp, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
 import './Login'
 import './Home.css'
-import sent from './1.wav'
-import rec from './2.mp3'
 
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min'
 let name
 const dataBaseConnection = collection(db, "post")
 
-var audio1 = new Audio(sent)
-var audio2 = new Audio(rec)
 
 
 class Home extends React.Component {
@@ -51,19 +48,24 @@ class Home extends React.Component {
         const formattedHours = (hours % 12 || 12).toString().padStart(2, '0');
         const minutes = currentDate.getMinutes().toString().padStart(2, '0');
 
+        const day = currentDate.getDate().toString().padStart(2, '0');
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+        const year = currentDate.getFullYear().toString().slice(-2);
 
-        const formattedDate = `${formattedHours}:${minutes} ${meridiem}`;
+        const formatTime = `${formattedHours}:${minutes} ${meridiem}`
+        const formatDate = `${day}-${month}-${year}`;
 
 
         if (!this.state.postText.length <= 0) {
             try {
                 this.setState({ msgid: this.state.msgid + 1 })
-                await addDoc(dataBaseConnection, { post: this.state.postText, author: auth.currentUser.displayName, id: auth.currentUser.uid, msgidno: serverTimestamp(), email: auth.currentUser.email, msgTime: formattedDate })
+                await addDoc(dataBaseConnection, { post: this.state.postText, author: auth.currentUser.displayName, id: auth.currentUser.uid, msgidno: serverTimestamp(), email: auth.currentUser.email, msgTime: formatTime, msgDate: formatDate })
                 document.getElementById("inputbox").value = ""
                 this.setState({ postText: "" })
                 this.setState({ letId: auth.currentUser.uid })
                 console.log(this.state.imgURL)
                 this.showPost()
+
 
             }
             catch {
@@ -89,8 +91,20 @@ class Home extends React.Component {
 
             }, 1500);
         }
+        this.scrollToBottom()
 
     }
+
+
+    scrollToBottom = () => {
+        try {
+            this.chatContainerRef.current.scrollTop = this.chatContainerRef.current.scrollHeight;
+        }
+        catch (error) {
+            console.log("hello")
+        };
+    }
+
 
 
     logOut = () => {
@@ -114,14 +128,14 @@ class Home extends React.Component {
     showPost = async () => {
 
         try {
-            const q = query(dataBaseConnection, orderBy("msgidno", "desc"), limit(15))
+            const q = query(dataBaseConnection, orderBy("msgidno", "desc"))
             const data = await getDocs(q)
             this.setState({ showPostState: data.docs.map((doc) => ({ ...doc.data(), id: doc.id })) })
             name = auth.currentUser.displayName
             this.setState({ FailAlert: false })
             this.setState({ postStatus: true })
             this.setState({ imgURL: auth.currentUser.photoURL })
-
+            this.scrollToBottom()
         }
         catch (error) {
             setTimeout(() => {
@@ -185,7 +199,20 @@ class Home extends React.Component {
                         <div className="heading">
                             <div className="pic">
                                 <img id='dp' src={this.state.imgURL} alt="" />
+                                <Online>
+                                    <div className='active' id="active"></div>
+
+                                </Online>
+                                <Offline>
+                                    <div className='unactive' id="active"></div>
+                                </Offline>
                             </div>
+                            <Offline>
+                                <div className="offline">
+                                    You appear to be offline at the moment!
+                                </div>
+                            </Offline>
+
                             <div className="UserName">
                                 {name}
                             </div>
@@ -220,12 +247,13 @@ class Home extends React.Component {
                                             (name === post.author)
                                                 ?
                                                 <div className="messageOwner" key={post.id} id='messageowner'>
+
                                                     <div className="nametime">
                                                         <div className="name">
                                                             Me
                                                         </div>
                                                         <div className="time">
-                                                            {post.msgTime}
+                                                            {post.msgTime} {post.msgDate}
                                                             <span id='delete'>
                                                                 <i style={{ cursor: "pointer" }} onClick={() => { this.handleclick(post.id) }} className="fa fa-trash" aria-hidden="true"></i>
                                                             </span>
@@ -243,7 +271,7 @@ class Home extends React.Component {
                                                             {post.author}
                                                         </div>
                                                         <div className="time">
-                                                            {post.msgTime}
+                                                            {post.msgTime} {post.msgDate}
                                                         </div>
                                                     </div>
 

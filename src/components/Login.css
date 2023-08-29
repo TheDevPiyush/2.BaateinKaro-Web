@@ -93,18 +93,18 @@ body {
 .inputcheck {
     display: flex;
     align-items: center;
-    widows: 100%;
-    gap: 10px;
+    justify-content: space-evenly;
     margin-top: 25px;
     color: grey;
 }
 
 input {
     cursor: pointer;
-    /* padding: 50px; */
 }
 
 #label {
+    padding: 15px;
+    width: 100%;
     cursor: pointer;
     user-select: none;
     font-size: larger;
@@ -116,5 +116,5 @@ input {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height:45vh;
+    height: 70vh;
 }

@@ -1,11 +1,11 @@
 import React from 'react'
-import { auth, provider } from './Firebase'
+import { auth, provider, db } from './Firebase'
 import { signInWithPopup } from 'firebase/auth'
 import { withRouter } from 'react-router-dom'
 import './Login.css'
+import { addDoc, collection, query, where } from 'firebase/firestore'
 
-
-
+const userData = collection(db, "users")
 
 class Login extends React.Component {
     constructor(props) {
@@ -25,19 +25,27 @@ class Login extends React.Component {
     }
 
 
-    submitTwo = () => {
-        signInWithPopup(auth, provider)
+    submitTwo = async () => {
+        await signInWithPopup(auth, provider)
             .then((result) => {
                 this.setState({ isLoggedin: true })
                 const user = result.user;
+                const q = query(userData, where("id", "==", auth.currentUser.uid))
+
+                if (!q) {
+                    addDoc(userData, {
+                        username: user.displayName,
+                        email: user.email,
+                        id: user.uid
+                    })
+                }
+
                 setTimeout(() => {
-                    // this.loginSuccess()
                     localStorage.setItem("loginData", this.state.isLoggedin)
                     this.props.history.push("/home")
 
                 }, 1500);
                 this.setState({ name: user.displayName, email: user.email })
-
 
             }).catch(() => {
                 this.setState({ FailAlert: true })
@@ -47,6 +55,7 @@ class Login extends React.Component {
             });
     }
     componentDidMount() {
+
         document.title = "Baatein Karoo || Log In"
 
         if (localStorage.getItem("rememberMe") === "yes") {
@@ -55,8 +64,9 @@ class Login extends React.Component {
                 this.props.history.push("/home")
             }
         }
-
     }
+
+
     checkbox = () => {
         var box = document.getElementById("checkbox")
 
@@ -106,7 +116,7 @@ class Login extends React.Component {
                                 <div className="inputcheck">
 
                                     <input onClick={this.checkbox} type="checkbox" name="Remember Me" id="checkbox" />
-                                    <label id='label' htmlFor="checkbox">Remember Me!</label>
+                                    <label id='label' htmlFor="checkbox">Remember_Me!</label>
                                 </div>
                             </div>
                         </div>

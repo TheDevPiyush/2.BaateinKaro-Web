@@ -5,18 +5,17 @@
     margin: 5px;
     margin-top: 10px;
     margin-bottom: 5px;
-    border-radius: 70px;
     padding: 10px;
     background-color: rgb(0, 67, 211);
-    border-radius: 15px 0px 15px 15px;
+    border-radius: 15px 15px 0px 15px;
     width: fit-content;
     align-self: flex-end;
 }
 
 #delete {
-    margin: 10px;
+    margin-left: 10px;
     color: white;
-    font-size: large;
+    font-size: larger;
 }
 
 .messageGot {
@@ -24,7 +23,6 @@
     margin: 5px;
     margin-top: 10px;
     margin-bottom: 5px;
-    border-radius: 70px;
     padding: 10px;
     background-color: rgb(63, 63, 63);
     border-radius: 0px 15px 15px 15px;
@@ -34,10 +32,11 @@
 
 .nametime {
     display: flex;
-    font-size: 15px;
+    font-size: 13px;
     gap: 5px;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
 
 }
 
@@ -46,7 +45,11 @@
 }
 
 .time {
-    color: darkgray;
+    color: rgb(189, 189, 189);
+}
+
+.date {
+    align-self: flex-end;
 }
 
 .msgcontent {
@@ -77,6 +80,7 @@
 }
 
 .heading {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,10 +90,34 @@
 
 }
 
+.pic {
+    position: relative;
+}
+
 #dp {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+}
+
+.active {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: lawngreen;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.unactive {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .headingDiv {
@@ -170,7 +198,7 @@ input:focus {
     width: 100vw;
     height: 100vh;
     z-index: 9999;
-    background-color: rgba(0, 0, 0, 0.728);
+    background-color: rgba(0, 0, 0, 0.801);
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -183,9 +211,7 @@ input:focus {
     justify-content: center;
     flex-direction: column;
     width: 90vw;
-    height: 30vh;
     text-align: center;
-    border: 2px solid white;
 
 }
 
@@ -193,6 +219,8 @@ input:focus {
     color: white;
     margin: 10px;
     font-size: large;
+    user-select: none;
+
 }
 
 .btnnn {
@@ -203,12 +231,23 @@ input:focus {
     margin-top: 30px;
 
 }
+.offline{
+    position: absolute;
+    top: 120%;
+    z-index: 9999;
+    width: 100vw;
+    left: 0;
+    text-align: center;
+    font-size: xx-large;
+    color: lightgrey;
+    user-select: none;
+    opacity: 0.7;
+}
 
-.yesBtn,
-.noBtn {
+.yesBtn{
     color: white;
     font-size: larger;
-    background-color: rgb(110, 15, 199);
+    background-color: red;
     border-radius: 7px;
     cursor: pointer;
     width: 90px;
@@ -216,9 +255,28 @@ input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
+}
+.noBtn {
+    color: white;
+    font-size: larger;
+    background-color: rgb(110, 15, 199);
+    border-radius: 7px;
+    cursor: pointer;
+    width: 95px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
 }
 
-.yesBtn:active, .noBtn:active {
+.yesBtn:active{
+    background-color: rgb(163, 0, 0)
+
+}
+.noBtn:active {
     background-color: rgb(67, 5, 125);
 
 
