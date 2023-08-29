@@ -107,6 +107,7 @@ class Login extends React.Component {
                             <div className="text-center container logintext" >
                                 Log in using your Google Account.
                             </div>
+                                <span id='contact'><a href="mailto:contactpiyushhere@gmail.com" rel="noreferrer"><strong>Developer</strong><i class="fa fa-envelope" aria-hidden="true"></i> </a></span>
 
                             <div className="my-5 btnbox">
 

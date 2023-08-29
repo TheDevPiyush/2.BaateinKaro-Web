@@ -1,7 +1,7 @@
 import React from 'react'
 import { auth, db } from './Firebase'
 import { Offline, Online } from "react-detect-offline";
-import { addDoc, collection, getDocs, orderBy, query, serverTimestamp, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
+import { addDoc, collection, getDocs, orderBy, query, serverTimestamp, onSnapshot, doc, deleteDoc, limit } from 'firebase/firestore'
 import './Login'
 import './Home.css'
 
@@ -33,7 +33,8 @@ class Home extends React.Component {
             deleteconfirmwindow: false,
             logoutconfirm: false,
             deleteconfirm: false,
-            thepostid: ""
+            thepostid: "",
+            counter: 1
         }
         this.chatContainerRef = React.createRef();
     }
@@ -96,6 +97,7 @@ class Home extends React.Component {
     }
 
 
+
     scrollToBottom = () => {
         try {
             this.chatContainerRef.current.scrollTop = this.chatContainerRef.current.scrollHeight;
@@ -128,7 +130,7 @@ class Home extends React.Component {
     showPost = async () => {
 
         try {
-            const q = query(dataBaseConnection, orderBy("msgidno", "desc"))
+            const q = query(dataBaseConnection, orderBy("msgidno", "desc"), limit(50))
             const data = await getDocs(q)
             this.setState({ showPostState: data.docs.map((doc) => ({ ...doc.data(), id: doc.id })) })
             name = auth.currentUser.displayName
@@ -136,6 +138,7 @@ class Home extends React.Component {
             this.setState({ postStatus: true })
             this.setState({ imgURL: auth.currentUser.photoURL })
             this.scrollToBottom()
+
         }
         catch (error) {
             setTimeout(() => {

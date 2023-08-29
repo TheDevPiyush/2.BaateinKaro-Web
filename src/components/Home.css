@@ -24,7 +24,7 @@
     margin-top: 10px;
     margin-bottom: 5px;
     padding: 10px;
-    background-color: rgb(63, 63, 63);
+    background-color: rgb(165, 0, 97);
     border-radius: 0px 15px 15px 15px;
     width: fit-content;
 
@@ -37,6 +37,7 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    font-weight: 700;
 
 }
 
@@ -62,8 +63,20 @@
     overflow-y: scroll;
     height: 100%;
     width: 100%;
-    padding-bottom: 70px;
-    padding-top: 50px;
+    padding-bottom: 5px;
+
+}
+
+@media screen and (max-width:500px) {
+
+    .showing-posts {
+        display: flex;
+        flex-direction: column-reverse;
+        overflow-y: scroll;
+        height: 100%;
+        width: 100%;
+        padding-bottom: 70px;
+    }
 
 }
 
@@ -133,7 +146,7 @@
 .logout {
     font-size: x-large;
     cursor: pointer;
-    color: red;
+    color: rgb(255, 0, 0);
 }
 
 .logout:active {
@@ -231,7 +244,8 @@ input:focus {
     margin-top: 30px;
 
 }
-.offline{
+
+.offline {
     position: absolute;
     top: 120%;
     z-index: 9999;
@@ -244,7 +258,7 @@ input:focus {
     opacity: 0.7;
 }
 
-.yesBtn{
+.yesBtn {
     color: white;
     font-size: larger;
     background-color: red;
@@ -257,6 +271,7 @@ input:focus {
     align-items: center;
     user-select: none;
 }
+
 .noBtn {
     color: white;
     font-size: larger;
@@ -272,10 +287,10 @@ input:focus {
 
 }
 
-.yesBtn:active{
+.yesBtn:active {
     background-color: rgb(163, 0, 0)
-
 }
+
 .noBtn:active {
     background-color: rgb(67, 5, 125);
 
