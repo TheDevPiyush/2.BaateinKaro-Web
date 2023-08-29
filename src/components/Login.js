@@ -86,12 +86,15 @@ class Login extends React.Component {
         return (
             <div className="text-center">
 
-
-                {this.state.isLoggedin === true && <div className="spin my-5">
-                    <div className="my-2 fs-4 fw-bold">Logging in. Please wait...</div>
-                    <div className="spinner-border text-primary my-2" style={{ "width": "3rem", "height": "3rem" }} role="status">
+                {this.state.isLoggedin === true &&
+                    <div className="mainSpin">
+                        <div className="spin my-5">
+                            <div className="my-3 fs-5 logging fw-bold">Logging in. Wait a moment...</div>
+                            <div className="spinner-border text-light my-3" style={{ "width": "3rem", "height": "3rem" }} role="status">
+                            </div>
+                        </div>
                     </div>
-                </div>}
+                }
 
                 {this.state.isLoggedin === false && <div className="loginbloack">
                     <div className="unlogged">
@@ -107,7 +110,7 @@ class Login extends React.Component {
                             <div className="text-center container logintext" >
                                 Log in using your Google Account.
                             </div>
-                                <span id='contact'><a href="mailto:contactpiyushhere@gmail.com" rel="noreferrer"><strong>Developer</strong><i class="fa fa-envelope" aria-hidden="true"></i> </a></span>
+                            <span id='contact'><a href="mailto:contactpiyushhere@gmail.com" rel="noreferrer"><strong>Developer</strong><i class="fa fa-envelope" aria-hidden="true"></i> </a></span>
 
                             <div className="my-5 btnbox">
 

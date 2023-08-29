@@ -299,9 +299,10 @@ class Home extends React.Component {
                         </div>}
 
 
-                    {this.state.postStatus === false && <div className="nopost text-center">
-                        <div className="my-2 fs-4 fw-bold">Loading Messages. Please wait...</div>
-                        <div className="spinner-border text-primary my-2" style={{ "width": "3rem", "height": "3rem" }} role="status">
+                    {this.state.postStatus === false && 
+                    <div className="nopost text-center">
+                        <div className="my-3 fs-4 lodingText fw-bold">Loading Chats...</div>
+                        <div className="spinner-border text-light my-3" style={{ "width": "3rem", "height": "3rem" }} role="status">
                         </div>
                     </div>}
 
