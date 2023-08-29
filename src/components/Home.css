@@ -1,2 +1,225 @@
 @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300&display=swap');
 
+.messageOwner {
+    border: 2px solid white;
+    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 70px;
+    padding: 10px;
+    background-color: rgb(0, 67, 211);
+    border-radius: 15px 0px 15px 15px;
+    width: fit-content;
+    align-self: flex-end;
+}
+
+#delete {
+    margin: 10px;
+    color: white;
+    font-size: large;
+}
+
+.messageGot {
+    border: 2px solid white;
+    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 70px;
+    padding: 10px;
+    background-color: rgb(63, 63, 63);
+    border-radius: 0px 15px 15px 15px;
+    width: fit-content;
+
+}
+
+.nametime {
+    display: flex;
+    font-size: 15px;
+    gap: 5px;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+.name {
+    color: antiquewhite;
+}
+
+.time {
+    color: darkgray;
+}
+
+.msgcontent {
+    font-size: larger;
+}
+
+.showing-posts {
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 70px;
+    padding-top: 50px;
+
+}
+
+.Messageparent {
+    width: 100vw;
+    margin: auto;
+    border-top: 3px solid rgb(113, 113, 113);
+    height: 90vh;
+    position: relative;
+}
+
+.empty {
+    flex-direction: row;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7vh;
+    gap: 15px;
+    background-color: rgb(71, 3, 130);
+
+}
+
+#dp {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.headingDiv {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.UserName {
+    font-size: x-large;
+}
+
+.logout {
+    font-size: x-large;
+    cursor: pointer;
+    color: red;
+}
+
+.logout:active {
+    opacity: 0.5;
+}
+
+input {
+    width: 85%;
+    background-color: rgb(71, 3, 130);
+    padding: 15px;
+    outline: none;
+    outline-style: none;
+    color: white;
+    font-size: large;
+
+}
+
+input:focus {
+    outline: none;
+    outline-style: none;
+}
+
+.inputdiv {
+    width: 100%;
+    margin: auto;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(71, 3, 130);
+    z-index: 1000;
+
+}
+
+.send {
+    font-size: xx-large;
+    color: rgb(225, 68, 0);
+    cursor: pointer;
+}
+
+.send:active {
+    color: rgba(255, 0, 255, 0.564);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+
+}
+
+::-webkit-scrollbar-thumb {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    width: 5px;
+    background-color: transparent
+}
+
+.topLayer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.728);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90vw;
+    height: 30vh;
+    text-align: center;
+    border: 2px solid white;
+
+}
+
+.text {
+    color: white;
+    margin: 10px;
+    font-size: large;
+}
+
+.btnnn {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    margin-top: 30px;
+
+}
+
+.yesBtn,
+.noBtn {
+    color: white;
+    font-size: larger;
+    background-color: rgb(110, 15, 199);
+    border-radius: 7px;
+    cursor: pointer;
+    width: 90px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yesBtn:active, .noBtn:active {
+    background-color: rgb(67, 5, 125);
+
+
+}

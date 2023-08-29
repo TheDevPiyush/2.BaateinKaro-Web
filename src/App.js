@@ -1,19 +1,23 @@
 import './App.css';
-import { MainApp } from './components/Login';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Login from './components/Login';
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 import Home from './components/Home';
+
+
 function App() {
+
+
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route exact path='/' element={<MainApp />} />
-        </Routes>
-        <Routes>
-          <Route exact path='/home' element={<Home />} />
-        </Routes>
+        <Switch>
+          <Route exact path='/' component={withRouter(Login)} />
+          <Route exact path='/home' component={withRouter(Home)} />
+        </Switch>
       </BrowserRouter>
     </>
+
+
   );
 }
 
